@@ -1,0 +1,24 @@
+{
+    "name": "bluethink/module-faq",
+    "description": "Faq",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Bluethink",
+            "email": "abhijeetkumar.bluethink@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Bluethink\\Faq\\": ""
+        }
+    }
+}
