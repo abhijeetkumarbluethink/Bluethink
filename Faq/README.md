@@ -35,28 +35,28 @@ In Admin panel you need to enable this module under store > configuration > Blue
 There are few options to enable/disable link on top navigation, menu bar and footer link
 There is also option to use seo friendly url for faq module
 
-<img src="https://github.com/santosh-bharto123/Bluethink/blob/main/configuration.png" alt="Magento FAQ Extension">
+<img src="https://github.com/abhijeetkumarbluethink/Bluethink/blob/main/configuration.png" alt="Magento FAQ Extension">
 
 
 
 ## Specifications
 In Admin Panel admin user can add/edit/delete/enable/disable new faq's category
 
-<img src="https://github.com/santosh-bharto123/Bluethink/blob/main/admin-category.png" alt="Magento FAQ Extension">
+<img src="https://github.com/abhijeetkumarbluethink/Bluethink/blob/main/admin-category.png" alt="Magento FAQ Extension">
 
 Admin user can add/edit/delete/enable/disable new faq under selected category
 
-<img src="https://github.com/santosh-bharto123/Bluethink/blob/main/admin-faq.png" alt="Magento FAQ Extension">
+<img src="https://github.com/abhijeetkumarbluethink/Bluethink/blob/main/admin-faq.png" alt="Magento FAQ Extension">
 
 On frontend you are able to see faq page on {{baseUrl}}/faq and enabled link
 
-<img src="https://github.com/santosh-bharto123/Bluethink/blob/main/faq-main.png" alt="Magento FAQ Extension">
+<img src="https://github.com/abhijeetkumarbluethink/Bluethink/blob/main/faq-main.png" alt="Magento FAQ Extension">
 
 Faq Category page
 
-<img src="https://github.com/santosh-bharto123/Bluethink/blob/main/faq-category.png" alt="Magento FAQ Extension">
+<img src="https://github.com/abhijeetkumarbluethink/Bluethink/blob/main/faq-category.png" alt="Magento FAQ Extension">
 
 Faq detail page
 
-<img src="https://github.com/santosh-bharto123/Bluethink/blob/main/faq.png" alt="Magento FAQ Extension">
+<img src="https://github.com/abhijeetkumarbluethink/Bluethink/blob/main/faq.png" alt="Magento FAQ Extension">
 
