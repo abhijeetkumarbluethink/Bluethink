@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="bluethink_faq_faq" resource="default" engine="innodb" comment="bluethink_faq_faq Table">
+		<column xsi:type="int" name="faq_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<column xsi:type="int" name="cat_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Category Id"/>
+		<column name="question" nullable="true" xsi:type="varchar" comment="question" length="255"/>
+		<column name="answer" nullable="true" xsi:type="text" comment="answer"/>
+		<column name="url_key" nullable="true" xsi:type="varchar" comment="url key"/>
+		<column name="status" nullable="true" xsi:type="smallint" comment="status" identity="false"/>
+		<column name="created_at" nullable="true" xsi:type="timestamp" comment="created_at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="faq_id"/>
+		</constraint>
+		<constraint xsi:type="unique" referenceId="BLUETHINK_FAQ_FAQ_URL_KEY">
+			<column name="url_key"/>
+		</constraint>
+		<index referenceId="BLUETHINK_FAQ_FAQ_QUESTION" indexType="btree">
+			<column name="question"/>
+		</index>
+		<index referenceId="BLUETHINK_FAQ_FAQ_STATUS" indexType="btree">
+			<column name="status"/>
+		</index>
+		<index referenceId="BLUETHINK_FAQ_QUESTION" indexType="fulltext">
+            <column name="question"/>
+            <column name="answer"/>
+        </index>
+	</table>
+
+	<table name="bluethink_faq_category" resource="default" engine="innodb" comment="bluethink_faq_category Table">
+		<column xsi:type="int" name="cat_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<column name="category_name" nullable="true" xsi:type="varchar" comment="question" length="255"/>
+		<column name="url_key" nullable="true" xsi:type="varchar" comment="url key"/>
+		<column name="status" nullable="true" xsi:type="smallint" comment="status" identity="false"/>
+		<column name="created_at" nullable="true" xsi:type="timestamp" comment="created_at" default="CURRENT_TIMESTAMP"/>
+		<column name="updated_at" nullable="true" xsi:type="timestamp" comment="updated_at" default="CURRENT_TIMESTAMP" on_update="true"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="cat_id"/>
+		</constraint>
+		<constraint xsi:type="unique" referenceId="BLUETHINK_FAQ_URL_KEY">
+			<column name="url_key"/>
+		</constraint>
+		<index referenceId="BLUETHINK_FAQ_CATEGORY_NAME" indexType="btree">
+			<column name="category_name"/>
+		</index>
+		<index referenceId="BLUETHINK_FAQ_CATEGORY_STATUS" indexType="btree">
+			<column name="status"/>
+		</index>
+		<index referenceId="BLUETHINK_FAQ" indexType="fulltext">
+            <column name="category_name"/>
+        </index>
+	</table>
+</schema>

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Bluethink::top_level" title="Bluethink" module="Bluethink_Faq" sortOrder="9999" resource="Magento_Backend::content"/>
+		<add id="Bluethink_Faq::bluethink_faq_faq" title="Manage Faqs" module="Bluethink_Faq" sortOrder="9999" resource="Magento_Backend::content" parent="Bluethink::top_level" action="bluethink_faq/faq/index"/>
+		<add id="Bluethink_Faq::bluethink_faq_category" title="Manage Faq Category" module="Bluethink_Faq" sortOrder="9999" resource="Magento_Backend::content" parent="Bluethink::top_level" action="bluethink_faq/category/index"/>
+	</menu>
+</config>

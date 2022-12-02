@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/bluethink-faq/faq" method="POST">
+		<service class="Bluethink\Faq\Api\FaqRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Bluethink_Faq::Faq_save"/>
+		</resources>
+	</route>
+	<route url="/V1/bluethink-faq/faq/search" method="GET">
+		<service class="Bluethink\Faq\Api\FaqRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Bluethink_Faq::Faq_view"/>
+		</resources>
+	</route>
+	<route url="/V1/bluethink-faq/faq/:faqId" method="GET">
+		<service class="Bluethink\Faq\Api\FaqRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Bluethink_Faq::Faq_view"/>
+		</resources>
+	</route>
+	<route url="/V1/bluethink-faq/faq/:faqId" method="PUT">
+		<service class="Bluethink\Faq\Api\FaqRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Bluethink_Faq::Faq_update"/>
+		</resources>
+	</route>
+	<route url="/V1/bluethink-faq/faq/:faqId" method="DELETE">
+		<service class="Bluethink\Faq\Api\FaqRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Bluethink_Faq::Faq_delete"/>
+		</resources>
+	</route>
+</routes>

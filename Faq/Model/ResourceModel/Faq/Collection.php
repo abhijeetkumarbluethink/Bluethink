@@ -1,0 +1,30 @@
+<?php
+/**
+ * Copyright © copyright@bluethink All rights reserved.
+ * See COPYING.txt for license details.
+ */
+declare(strict_types=1);
+
+namespace Bluethink\Faq\Model\ResourceModel\Faq;
+
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
+class Collection extends AbstractCollection
+{
+
+    /**
+     * @var $_idFieldName
+     */
+    protected $_idFieldName = 'faq_id';
+
+    /**
+     * @inheritDoc
+     */
+    protected function _construct()
+    {
+        $this->_init(
+            \Bluethink\Faq\Model\Faq::class,
+            \Bluethink\Faq\Model\ResourceModel\Faq::class
+        );
+    }
+}

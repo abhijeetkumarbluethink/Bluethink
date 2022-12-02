@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">bluethink_faq_cat_form.cat_form_data_source</item>
+		</item>
+		<item name="label" xsi:type="string" translate="true">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button name="back" class="Bluethink\Faq\Block\Adminhtml\Category\Edit\BackButton"/>
+			<button name="delete" class="Bluethink\Faq\Block\Adminhtml\Category\Edit\DeleteButton"/>
+			<button name="save" class="Bluethink\Faq\Block\Adminhtml\Category\Edit\SaveButton"/>
+			<button name="save_and_continue" class="Bluethink\Faq\Block\Adminhtml\Category\Edit\SaveAndContinueButton"/>
+		</buttons>
+		<namespace>bluethink_faq_cat_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>bluethink_faq_cat_form.cat_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="cat_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider name="cat_form_data_source" class="Bluethink\Faq\Model\Category\DataProvider">
+			<settings>
+				<requestFieldName>cat_id</requestFieldName>
+				<primaryFieldName>cat_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+		<field name="category_name" formElement="input" sortOrder="10">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Category</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Category Name</label>
+				<dataScope>category_name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field name="status" formElement="select">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">homeslider</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Status</label>
+				<dataScope>status</dataScope>
+			</settings>
+			<formElements>
+				<select>
+					<settings>
+						<options class="Bluethink\Faq\Model\Status"/>
+					</settings>
+				</select>
+			</formElements>
+		</field>
+	</fieldset>
+</form>

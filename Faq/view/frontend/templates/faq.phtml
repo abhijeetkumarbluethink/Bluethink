@@ -1,0 +1,39 @@
+<?php
+    $collection = $block->getFaqCollection();
+?>
+<?php foreach ($collection as $key => $data):
+    $i = 0; ?>
+    <div class="card card-1">
+        <div class="top">
+            <h1><?=$block->escapeHtmlAttr($data['category_name']) ?></h1>
+        </div>
+        <div class="bottom">
+            <!-- Accordion -->
+            <div class="item-list">
+                <ul class="text-item">
+                    <?php
+                    if (!empty($data['question'])) {
+                        foreach ($data['question'] as $questionKey => $question):
+                            if ($i < 4) { ?>
+                            <li class="item">
+                            <a href="<?=$block->escapeUrl($block->getUrl($question['url']))?>">
+                                <?=$block->escapeHtmlAttr($question['question']) ?>
+                            </a>
+                            </li>
+                            <?php }
+                            $i++;
+                        endforeach;
+                    }
+                    ?>
+                </ul>
+            </div>
+            <div class="bt_read_more">
+                <button>
+                    <a href="<?=$block->escapeUrl($block->getUrl($data['url']))?>">
+                        <?=$block->escapeHtmlAttr(__('Read More'))?>
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>

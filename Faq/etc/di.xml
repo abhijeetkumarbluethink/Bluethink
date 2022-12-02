@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Bluethink\Faq\Api\FaqRepositoryInterface" type="Bluethink\Faq\Model\FaqRepository"/>
+	<preference for="Bluethink\Faq\Api\Data\FaqInterface" type="Bluethink\Faq\Model\Faq"/>
+	<preference for="Bluethink\Faq\Api\Data\FaqSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Bluethink\Faq\Model\ResourceModel\Faq\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">bluethink_faq_faq</argument>
+			<argument name="resourceModel" xsi:type="string">Bluethink\Faq\Model\ResourceModel\Faq\Collection</argument>
+		</arguments>
+	</virtualType>
+
+	<virtualType name="Bluethink\Faq\Model\ResourceModel\Category\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">bluethink_faq_category</argument>
+			<argument name="resourceModel" xsi:type="string">Bluethink\Faq\Model\ResourceModel\Category\Collection</argument>
+		</arguments>
+	</virtualType>
+
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="bluethink_faq_faq_listing_data_source" xsi:type="string">Bluethink\Faq\Model\ResourceModel\Faq\Grid\Collection</item>
+			</argument>
+			<argument name="collections" xsi:type="array">
+				<item name="bluethink_faq_cat_listing_data_source" xsi:type="string">Bluethink\Faq\Model\ResourceModel\Category\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

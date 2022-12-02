@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+    <referenceBlock name="footer_links">
+         <block class="Bluethink\Faq\Block\Linkfaq" name="faq-footer-link" ifconfig="faqs/general/footerlink">
+             <arguments>
+                 <argument name="label" xsi:type="string">Faqs</argument>
+                 <argument name="path" xsi:type="string">faq</argument>
+             </arguments>
+         </block>
+     </referenceBlock>
+     <referenceBlock name="catalog.topnav" >
+        <block class="Bluethink\Faq\Block\Link" name="faq-menu-link" ifconfig="faqs/general/menulink">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">Faqs</argument>
+                <argument name="path" xsi:type="string" translate="true">faq</argument>
+                <argument name="class" xsi:type="string">level-top</argument>
+            </arguments>
+        </block>
+    </referenceBlock>
+    <referenceBlock name="header.links">
+         <block class="Bluethink\Faq\Block\Linkfaq" name="faq-header-link" ifconfig="faqs/general/toplink">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">Faqs</argument>
+                <argument name="path" xsi:type="string" translate="true">faq</argument>
+            </arguments>
+         </block>
+     </referenceBlock>
+</body>
+</page>

@@ -1,0 +1,18 @@
+<?php
+    $collection = $block->getFaq();
+?>
+<div class="link2Back">
+    <button>
+        <a href="<?=$block->escapeUrl($block->getUrl('faq'))?>">
+            <?=$block->escapeHtmlAttr(__('Back to Faq'))?>
+        </a>
+    </button>
+</div>
+<div class="article_content">
+    <div class="article_title">
+        <h3><?=$block->escapeHtmlAttr($collection->getQuestion());?></h3>
+    </div>
+    <div class="article_description">
+        <?= /* @noEscape */ $collection->getAnswer();?>
+    </div>
+</div>

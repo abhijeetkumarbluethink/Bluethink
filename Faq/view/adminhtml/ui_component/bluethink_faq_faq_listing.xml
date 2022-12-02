@@ -1,0 +1,189 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">bluethink_faq_faq_listing.bluethink_faq_faq_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>bluethink_faq_faq_columns</spinner>
+		<deps>
+			<dep>bluethink_faq_faq_listing.bluethink_faq_faq_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add New Faq</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource name="bluethink_faq_faq_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">faq_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Bluethink_Faq::Faq</aclResource>
+		<dataProvider name="bluethink_faq_faq_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>faq_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<filterSearch name="fulltext"/>
+		<paging name="listing_paging"/>
+		<massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="enable">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">enable</item>
+                        <item name="label" xsi:type="string" translate="true">Enable</item>
+                        <item name="url" xsi:type="url" path="bluethink_faq/faq/massEnable"/>
+                    </item>
+                </argument>
+            </action>
+            <action name="disable">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">disable</item>
+                        <item name="label" xsi:type="string" translate="true">Disable</item>
+                        <item name="url" xsi:type="url" path="bluethink_faq/faq/massDisable"/>
+                    </item>
+                </argument>
+            </action>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="bluethink_faq/faq/massDelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Faq</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+	</listingToolbar>
+	<columns name="bluethink_faq_faq_columns">
+		<settings>
+			<editorConfig>
+				<param name="selectProvider" xsi:type="string">bluethink_faq_faq_listing.bluethink_faq_faq_listing.bluethink_faq_faq_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">faq_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="bluethink_faq/Faq/inlineEdit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">bluethink_faq_faq_listing.bluethink_faq_faq_listing.bluethink_faq_faq_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>faq_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="faq_id" sortOrder="10">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="question" sortOrder="20">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Question</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="cat_id" sortOrder="30">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Bluethink\Faq\Model\CategoryOptions</item>
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">select</item>
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+					<item name="dataType" xsi:type="string">select</item>
+					<item name="sorting" xsi:type="string">asc</item>
+					<item name="sortOrder" xsi:type="number">2</item>
+					<item name="label" translate="true" xsi:type="string">Category</item>
+				</item>
+			</argument>
+		</column>
+		<column name="status" sortOrder="40">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Bluethink\Faq\Model\Status</item>
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">select</item>
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+					<item name="dataType" xsi:type="string">select</item>
+					<item name="sorting" xsi:type="string">asc</item>
+					<item name="sortOrder" xsi:type="number">2</item>
+					<item name="label" translate="true" xsi:type="string">Status</item>
+				</item>
+			</argument>
+		</column>
+		<column name="created_at" sortOrder="50">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Created Date</label>
+				<editor>
+					<editorType>date</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="updated_at" sortOrder="60">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Updated On</label>
+				<editor>
+					<editorType>date</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<actionsColumn name="actions" class="Bluethink\Faq\Ui\Component\Listing\Column\FaqActions">
+			<settings>
+				<indexField>faq_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+	
+</listing>
